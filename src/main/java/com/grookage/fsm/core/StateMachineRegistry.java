@@ -20,10 +20,13 @@ import com.grookage.fsm.core.config.MachineBuilderConfig;
 import com.grookage.fsm.core.hubs.TransitionProcessorHub;
 import com.grookage.fsm.core.models.executors.ErrorAction;
 import com.grookage.fsm.core.models.executors.EventAction;
-import lombok.NoArgsConstructor;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import lombok.NoArgsConstructor;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 @NoArgsConstructor

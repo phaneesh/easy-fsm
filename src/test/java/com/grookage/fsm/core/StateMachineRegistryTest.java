@@ -23,7 +23,6 @@ import com.grookage.fsm.core.helpers.ResourceHelper;
 import com.grookage.fsm.core.stubs.TestEvent;
 import com.grookage.fsm.core.stubs.TestHub;
 import com.grookage.fsm.core.stubs.TestState;
-
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
