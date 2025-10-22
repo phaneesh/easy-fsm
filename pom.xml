@@ -99,24 +99,15 @@
     <dependency>
       <artifactId>slf4j-api</artifactId>
       <groupId>org.slf4j</groupId>
-      <scope>compile</scope>
+      <scope>provided</scope>
       <version>${sl4j.version}</version>
     </dependency>
-
     <dependency>
       <artifactId>lombok</artifactId>
       <groupId>org.projectlombok</groupId>
-      <scope>compile</scope>
+      <scope>provided</scope>
       <version>${lombok.version}</version>
     </dependency>
-
-    <dependency>
-      <artifactId>guava</artifactId>
-      <groupId>com.google.guava</groupId>
-      <scope>provided</scope>
-      <version>${guava.version}</version>
-    </dependency>
-
     <dependency>
       <artifactId>jackson-annotations</artifactId>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -126,17 +117,6 @@
       <artifactId>jackson-databind</artifactId>
       <groupId>com.fasterxml.jackson.core</groupId>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <artifactId>jakarta.validation-api</artifactId>
-      <groupId>jakarta.validation</groupId>
-      <scope>compile</scope>
-      <version>${jakarta.validation-api.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <artifactId>junit-jupiter</artifactId>

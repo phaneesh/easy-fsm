@@ -16,8 +16,9 @@
 package com.grookage.fsm.core.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.common.base.Strings;
+import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import lombok.Data;
@@ -40,6 +41,7 @@ import lombok.Setter;
 public abstract class Context<S extends State, E extends Event, K extends TransitionKey> implements
     Serializable {
 
+  @Serial
   private static final long serialVersionUID = 42L;
   private S from;
   private S to;
@@ -56,7 +58,7 @@ public abstract class Context<S extends State, E extends Event, K extends Transi
 
   @JsonIgnore
   public <V> void addContext(String key, V value) {
-    if (Strings.isNullOrEmpty(key.toUpperCase())) {
+    if (Objects.isNull(key) || key.trim().isEmpty()) {
       throw new IllegalArgumentException("Invalid key for context data. Key cannot be null/empty");
     }
     if (this.data == null) {

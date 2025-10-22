@@ -15,7 +15,6 @@
  */
 package com.grookage.fsm.core;
 
-import com.google.common.base.Preconditions;
 import com.grookage.fsm.core.config.MachineBuilderConfig;
 import com.grookage.fsm.core.hubs.TransitionProcessorHub;
 import com.grookage.fsm.core.models.executors.ErrorAction;
@@ -24,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import lombok.NoArgsConstructor;
@@ -64,8 +64,9 @@ public class StateMachineRegistry {
     }
 
     public StateMachineRegistry build() {
-        Preconditions.checkArgument(null != machineBuilderConfigs && !machineBuilderConfigs.isEmpty(),
-                "Machine Builder Configs can't be null or empty");
+        if (Objects.isNull(machineBuilderConfigs) || machineBuilderConfigs.isEmpty()) {
+          throw new IllegalArgumentException("Machine Builder Configs can't be null or empty");
+        }
         machineBuilderConfigs.forEach(machineBuilderConfig -> {
             final var stateMachine = new StateMachineBuilder<>()
                     .withMachineBuilderConfig(machineBuilderConfig)

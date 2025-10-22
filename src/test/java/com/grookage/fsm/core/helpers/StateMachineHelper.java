@@ -15,7 +15,7 @@
  */
 package com.grookage.fsm.core.helpers;
 
-import com.google.common.collect.Sets;
+
 import com.grookage.fsm.core.StateMachine;
 import com.grookage.fsm.core.stubs.TestContext;
 import com.grookage.fsm.core.stubs.TestEvent;
@@ -23,6 +23,8 @@ import com.grookage.fsm.core.stubs.TestHub;
 import com.grookage.fsm.core.stubs.TestMachine;
 import com.grookage.fsm.core.stubs.TestState;
 import com.grookage.fsm.core.stubs.TestTransitionKey;
+import java.util.HashSet;
+import java.util.List;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -40,9 +42,9 @@ public class StateMachineHelper {
         .onTransition(TestEvent.INITIATE, TestState.STARTED, TestState.CREATED)
         .onTransition(TestEvent.MOVE_TO_COMPLETED, TestState.IN_PROGRESS, TestState.COMPLETED)
         .onTransition(TestEvent.MOVE_TO_FAILED,
-            Sets.newHashSet(TestState.STARTED, TestState.IN_PROGRESS),
+          new HashSet<>(List.of(TestState.STARTED, TestState.IN_PROGRESS)),
             TestState.FAILED)
-        .end(Sets.newHashSet(TestState.COMPLETED, TestState.FAILED));
+        .end(new HashSet<>(List.of(TestState.COMPLETED, TestState.FAILED)));
     return stateMachine;
   }
 
@@ -56,9 +58,9 @@ public class StateMachineHelper {
         .onTransition(TestEvent.MOVE_TO_PROGRESS, TestState.CREATED, TestState.IN_PROGRESS)
         .onTransition(TestEvent.MOVE_TO_COMPLETED, TestState.IN_PROGRESS, TestState.COMPLETED)
         .onTransition(TestEvent.MOVE_TO_FAILED,
-            Sets.newHashSet(TestState.STARTED, TestState.CREATED, TestState.IN_PROGRESS),
+            new HashSet<>(List.of(TestState.STARTED, TestState.CREATED, TestState.IN_PROGRESS)),
             TestState.FAILED)
-        .end(Sets.newHashSet(TestState.COMPLETED, TestState.FAILED));
+        .end(new HashSet<>(List.of(TestState.COMPLETED, TestState.FAILED)));
     return stateMachine;
   }
 }
